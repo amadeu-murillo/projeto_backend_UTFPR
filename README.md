@@ -29,4 +29,4 @@ Siga as etapas abaixo para configurar e executar o projeto localmente:
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/username/repo-name.git
+   git clone https://github.com/amadeu-murillo/projeto_backend_UTFPR.git
