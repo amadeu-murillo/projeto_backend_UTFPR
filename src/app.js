@@ -13,14 +13,15 @@ const rotaUser = require('../src/routes/usersRoute')
 const rotaInstall = require('../src/routes/install');
 const rotaDocs = require('../src/routes/docs');
 const rotaPosts = require('../src/routes/postRoute');
+const countUser = require('../src/routes/numeroUsers')
 // Rotas
 app.use('/registrar', rotaRegistro);
-app.use('./perfil',rotaUser)
+app.use('/perfil',rotaUser)
 app.use('/login', rotaLogin);
 app.use('/install', rotaInstall);
 app.use('/docs', rotaDocs);
 app.use('/posts', rotaPosts);
-
+app.use('/numeroUsers',countUser)
 
 
 

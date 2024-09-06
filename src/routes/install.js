@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const Post = require('../models/post')
 const router = express.Router();
 /**
  * @swagger
@@ -32,12 +33,24 @@ router.get('/install', async (req, res) => {
             nome: `usuarioRoot`,
             email: `usuarioRoot@gmail.com`,
             senha: hashedPassword,
-            isAdmin: true
+            isAdmin: true,
+            acesso:0
         });
+        await usuarioRoot.save()
+
+        for(var i = 0; i<5;i++){
+
+            const novoPost = new Post({
+                titulo:"tituloAuto",
+                conteudo:"dedwedewdw",
+                autor:usuarioRoot._id
+            });
+    
+            await novoPost.save();
+        }
         
 
         
-        await usuarioRoot.save()
 
         res.json({ mensagem: 'Banco de dados instalado com sucesso.', usuarioRoot });
     } catch (err) {

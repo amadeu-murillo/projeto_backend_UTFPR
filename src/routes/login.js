@@ -60,7 +60,9 @@ router.post('/logar', async (req, res) => {
         if (!senhaValida) {
             return res.status(403).json({ logged: false, mensagem: 'Usuário ou senha inválidos!' });
         }
-
+        //contar usuários
+        usuario.acesso += 1;
+        await usuario.save();
         const token = jwt.sign(
             { usuarioId: usuario._id, isAdmin: usuario.isAdmin },
             process.env.JWT_SECRET,
